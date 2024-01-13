@@ -5,9 +5,9 @@ const ErrorHandlerFunc=require("../utils/ErrorHandlerFunc")
 async function updateVendor(vendorName,userId,price,req,res,next){
     try{
         // Use findOne instead of find
-        console.log(userId)
+        // console.log(userId)
         let vendor = await vendorModel.findOne({ vendorName, user:userId });
-        console.log("bendu",vendor)
+        // console.log("bendu",vendor)
         if (vendor) {
             const newPrice = price+vendor.DueAmt;
 

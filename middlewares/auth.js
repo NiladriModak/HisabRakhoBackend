@@ -3,7 +3,7 @@ const ErrorHandler = require("../utils/ErrorHandlerFunc")
 const jwt=require("jsonwebtoken")
 exports.isAuthenticated=async(req,res,next)=>{
     const { token } = req.cookies;
-    console.log("backend = ",token)
+    // console.log("backend = ",token)
     if (!token) {
         return next(new ErrorHandler("First Login to access these resources (auth.js)", 401));
     }
