@@ -140,12 +140,12 @@ exports.addStocks=async(req,res,next)=>{
         if(!vendor){
             return next(new ErrorHandler("Vendor not found",404));
         }
-        const {addProduct}=req.body;
+        const {addProduct,amount}=req.body;
         
         if(addProduct<=0){
             return next(new ErrorHandler("Please enter any number",404));
         }
-        const addDue=(Number(product.price)*Number(addProduct))+vendor.DueAmt
+        const addDue=(Number(amount)*Number(addProduct))+vendor.DueAmt
         const quantity=Number(product.quantity)+Number(addProduct)
         product.Record.push([addProduct,new Date(Date.now())])
         if(product.Record.length>70){
