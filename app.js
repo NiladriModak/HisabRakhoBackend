@@ -7,7 +7,7 @@ const dotenv = require("dotenv");
 const cors = require("cors")
 app.use(cors(
   {
-    origin:"https://hisab-rakho-frontend.vercel.app/",//"https://hisab-rakho-frontend.vercel.app",
+    origin:"https://hisab-rakho-frontend.vercel.app",//"https://hisab-rakho-frontend.vercel.app",
     credentials: true
   }
 ))
