@@ -115,7 +115,7 @@ const previousPaymentsDetails=async(req,res,next)=>{
         const {prevdue}= req.body;
         let vendor = await vendorModel.findById(req.params.id);
         if(vendor){
-            let DueAmt = vendor.DueAmt+prevdue;
+            let DueAmt = vendor.DueAmt+Number(prevdue);
 
             vendor = await vendorModel.findByIdAndUpdate(
                 req.params.id,
