@@ -145,7 +145,12 @@ exports.addStocks=async(req,res,next)=>{
         if(addProduct<=0){
             return next(new ErrorHandler("Please enter any number",404));
         }
-        const addDue=(Number(amount)*Number(addProduct))+vendor.DueAmt
+        let amt=amount
+        if(amount==0){
+            amt=product.price
+            // console.log("here",amt)
+        }
+        const addDue=(Number(amt)*Number(addProduct))+vendor.DueAmt
         const quantity=Number(product.quantity)+Number(addProduct)
         product.Record.push([addProduct,new Date(Date.now())])
         if(product.Record.length>70){

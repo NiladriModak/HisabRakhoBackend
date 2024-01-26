@@ -8,6 +8,7 @@ const cors = require("cors")
 app.use(cors(
   {
     origin:"https://hisab-rakho-frontend.vercel.app",//"https://hisab-rakho-frontend.vercel.app",
+    // origin:"http://localhost:5173",
     credentials: true
   }
 ))

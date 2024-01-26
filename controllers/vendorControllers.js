@@ -108,4 +108,36 @@ const updatePaymentsDetails=async(req,res,next)=>{
 }
 
 
-module.exports={updateVendor,updatePaymentsDetails,getAllVendors,getSingleVendors}
+
+const previousPaymentsDetails=async(req,res,next)=>{
+    try {
+        const vendorId=req.params.id;
+        const {prevdue}= req.body;
+        let vendor = await vendorModel.findById(req.params.id);
+        if(vendor){
+            let DueAmt = vendor.DueAmt+prevdue;
+
+            vendor = await vendorModel.findByIdAndUpdate(
+                req.params.id,
+                {
+                    DueAmt,
+                },
+                {
+                    new: true,
+                    runValidators: true,
+                    useFindAndModify: false,
+                }
+            );
+        }
+        res.status(200).json({
+            success:true,
+            vendor
+        })
+    } catch (error) {
+        next(error);
+    }
+}
+
+
+
+module.exports={updateVendor,updatePaymentsDetails,getAllVendors,getSingleVendors,previousPaymentsDetails}
